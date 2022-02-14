@@ -82,12 +82,12 @@ def deep_get(target: dict, *args: str, default=None) -> Any:
 
     Example usage:
 
-        >>> thing = {'a': {'b': {'c': 'foo'} } }
-        >>> deep_get(thing, ('a', 'b', 'c'), None)
-        'foo'
-        >>> deep_get(thing, ('a', 'b'), None)
-        {'c': 'foo'}
-        >>> deep_get(thing, ('a', 'd'), None)
+        >>> thing = {"a": {"b": {"c": "foo"} } }
+        >>> deep_get(thing, ("a", "b", "c"), None)
+        "foo"
+        >>> deep_get(thing, ("a", "b"), None)
+        {"c": "foo"}
+        >>> deep_get(thing, ("a", "d"), None)
         None
 
     :param target: The dict to walk into for the desired value.
@@ -364,8 +364,8 @@ sys.path: {sys.path}"""
 
         if data["commander"].get("docked"):
             print(
-                f'{deep_get(data, "lastSystem", "name", default="Unknown")},'
-                f'{deep_get(data, "lastStarport", "name", default="Unknown")}'
+                f"{deep_get(data, 'lastSystem', 'name', default='Unknown')},"
+                f"{deep_get(data, 'lastStarport', 'name', default='Unknown')}"
             )
 
         else:
@@ -478,7 +478,7 @@ sys.path: {sys.path}"""
 
     except companion.CmdrError:  # Companion API return doesn't match Journal
         logger.error(
-            f'Commander "{data["commander"]["name"]}" from CAPI doesn\'t match ' f'"{monitor.cmdr}" from Journal'
+            f"Commander '{data['commander']['name']}' from CAPI doesn't match " f"'{monitor.cmdr}' from Journal"
         )
         sys.exit(EXIT_SERVER)
 
